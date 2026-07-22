@@ -1,16 +1,20 @@
 import asyncio
 import logging
+import os
 import time
 # ChatPermissions doğrudan buradan import edilmeli
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ChatPermissions
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-YASAKLI_KELIMELER = []  # Şimdilik boş bir liste olarak tanımla
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # --- 1. AYARLAR ---
-TOKEN = "8556991612:AAFrHCzzg02u1zAn7APDaH00Ktq-q-6aceU"
-SILME_SURESI = 60 
+TOKEN = os.environ["BOT_TOKEN"]
+SILME_SURESI = 60
 
 # Engellenecek kelimeler (İstediğin kadar ekleyebilirsin)
-ASAKLI_KELIMELER = [
+YASAKLI_KELIMELER = [
    "aptal", "gerizekali", "amına", "t.me/", "link", "orusbu", "sik", "piç", "göt", "yavşak", 
     "aq", "amk", "amq", "oç", "meme", "yarrak", "daşşak", "pezevenk", "kaşar", "kahpe", 
     "ibne", "gavat", "pust", "puşt", "şerefsiz", "salak", "it", "köpek", "hayvan", "lan",
